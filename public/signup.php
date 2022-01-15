@@ -1,5 +1,4 @@
 <?php
-// DBに接続
 $dbh = new PDO('mysql:host=mysql;dbname=techc', 'root', '');
 
 if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password'])) {
