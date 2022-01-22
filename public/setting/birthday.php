@@ -31,6 +31,11 @@
    return;
  }
  ?>
+<link rel="stylesheet" href="./common.css">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
  <a href="./index.php">設定一覧に戻る</a>
 
  <h1>生年月日</h1>

@@ -57,7 +57,13 @@ $target_user_ids = array_map(
 ); // array_map で followee_user_id カラムだけ抜き出す
 $target_user_ids[] = $_SESSION['login_user_id']; // 自分自身の投稿も表示対象とする
 
+
 ?>
+<link rel="stylesheet" href="./common.css">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
 <div>
    現在 <?= htmlspecialchars($user['name']) ?> (ID: <?= $user['id'] ?>) さんでログイン中
  </div>
@@ -68,7 +74,7 @@ $target_user_ids[] = $_SESSION['login_user_id']; // 自分自身の投稿も表�
  </div>
 
  <!-- フォームのPOST先はこのファイル自身にする -->
- <form method="POST" action="./timeline.php"><!-- enctypeは外しておきましょう -->
+ <form method="POST" action="./timeline.php" enctype="multipart/form-data"><!-- enctypeは外しておきましょう -->
    <textarea name="body" required></textarea>
    <div style="margin: 1em 0;">
      <input type="file" accept="image/*" name="image" id="imageInput">
@@ -96,6 +102,9 @@ $target_user_ids[] = $_SESSION['login_user_id']; // 自分自身の投稿も表�
    </dd>
  </dl>
  <div id="entriesRenderArea"></div>
+
+
+
  <script>
 document.addEventListener("DOMContentLoaded", () => {
   const entryTemplate = document.getElementById('entryTemplate');

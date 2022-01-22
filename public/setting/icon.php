@@ -46,6 +46,10 @@ if (isset($_POST['image_base64'])) {
  }
 
  ?>
+<link rel="stylesheet" href="./setting/common.css">
+ <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
  <a href="./index.php">設定一覧に戻る</a>
  <h1>アイコン</h1>
 

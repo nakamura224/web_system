@@ -16,6 +16,11 @@
  ]);
  $user = $select_sth->fetch();
  ?>
+ <link rel="stylesheet" href="./setting/common.css">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
 <a href="/timeline.php">タイムラインに戻る</a>
  <h1>設定画面</h1>

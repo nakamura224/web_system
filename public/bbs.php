@@ -22,7 +22,11 @@ function bodyFilter (string $body): string
    return $body;
   }
   ?>
+  <link rel="stylesheet" href="./common.css">
 
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <?php if(empty($_SESSION['login_user_id'])): ?>
   <a href="/login.php">ログイン</a>して自分のタイムラインを閲覧しましょう！
  <?php else: ?>

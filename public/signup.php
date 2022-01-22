@@ -32,7 +32,9 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password
   return;
 }
 ?>
-
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <h1>会員登録</h1>
 
 会員登録済の人は<a href="/login.php">ログイン</a>しましょう。

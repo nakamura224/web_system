@@ -21,13 +21,13 @@
  }
 
  // 投稿データを取得。紐づく会員情報も結合し同時に取得する。
- $select_sth = $dbh->prepare(
+ $entries_select_sth = $dbh->prepare(
   'SELECT bbs_entries.*, users.name AS user_name, users.icon_filename AS user_icon_filename'
   . ' FROM bbs_entries INNER JOIN users ON bbs_entries.user_id = users.id'
   . ' WHERE user_id = :user_id'
   . ' ORDER BY bbs_entries.created_at DESC'
 );
-$select_sth->execute([
+$entries_select_sth->execute([
   ':user_id' => $user_id,
 ]);
 
@@ -62,6 +62,9 @@ $select_sth->execute([
    $follower_relationship = $select_sth->fetch();
  }
  ?>
+ <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
  <a href="/timeline.php">タイムラインに戻る</a>
  <div style="
      width: 100%; height: 15em;
@@ -116,13 +119,14 @@ $select_sth->execute([
  ?>
    <?= $today->diff($birthday)->y ?>歳
  <?php endif; ?>
-
+ <br>
+ <a href="../users.php">会員一覧へ戻る</a>
 <div>
    <?= nl2br(htmlspecialchars($user['introduction'])) ?>
 </div>
 <hr>
 
- <?php foreach($select_sth as $entry): ?>
+ <?php foreach($entries_select_sth as $entry): ?>
    <dl style="margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid #ccc;">
      <dt>日時</dt>
      <dd><?= $entry['created_at'] ?></dd>
@@ -135,5 +139,6 @@ $select_sth->execute([
        </div>
        <?php endif; ?>
      </dd>
+     
    </dl>
  <?php endforeach ?>

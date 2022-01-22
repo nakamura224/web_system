@@ -46,7 +46,10 @@ if (!empty($where_sql_array)) {
    ); // array_map で followee_user_id カラムだけ抜き出す
  }
  ?>
-
+ <link rel="stylesheet" href="./common.css">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
  <body>
    <h1>会員一覧</h1>
    <div style="margin-bottom: 1em;">

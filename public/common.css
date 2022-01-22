@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+body > .wrap {
+  width: 100%;
+}
+img {
+  width: 100%;
+}
+
+/* PC用のCSSをメディアクエリの中に記述する */
+@media screen and (min-width: 768px) {
+  body > .wrap {
+    width: 960px;
+  }
+  img {
+    width: auto;
+  }
+}
