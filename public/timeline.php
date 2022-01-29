@@ -59,53 +59,61 @@ $target_user_ids[] = $_SESSION['login_user_id']; // 自分自身の投稿も表�
 
 
 ?>
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
 <link rel="stylesheet" href="./common.css">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<div>
-   現在 <?= htmlspecialchars($user['name']) ?> (ID: <?= $user['id'] ?>) さんでログイン中
- </div>
- <div style="margin-bottom: 1em;">
-   <a href="/setting/index.php">設定画面</a>
-   /
-   <a href="/users.php">会員一覧画面</a>
- </div>
-
+<div class = "p-3 mb-2 bg-info text-white">
+  <div>
+    現在 <?= htmlspecialchars($user['name']) ?> (ID: <?= $user['id'] ?>) さんでログイン中
+  </div>
+  <div style="margin-bottom: 1em;">
+    <a href="/setting/index.php" class="text-warning">設定画面</a>
+    /
+    <a href="/users.php" class="text-warning">会員一覧画面</a>
+  </div>
+</div>
  <!-- フォームのPOST先はこのファイル自身にする -->
- <form method="POST" action="./timeline.php" enctype="multipart/form-data"><!-- enctypeは外しておきましょう -->
-   <textarea name="body" required></textarea>
-   <div style="margin: 1em 0;">
-     <input type="file" accept="image/*" name="image" id="imageInput">
-   </div>
-   <input id="imageBase64Input" type="hidden" name="image_base64"><!-- base64を送る用のinput (非表示) -->
-   <canvas id="imageCanvas" style="display: none;"></canvas><!-- 画像縮小に使うcanvas (非表示) -->
-   <button type="submit">送信</button>
- </form>
+ <div class="mx-auto" style="width: 300px;">
+  <form method="POST" action="./timeline.php" enctype="multipart/form-data" class="py-4"><!-- enctypeは外しておきましょう -->
+    <textarea name="body" required class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+    <div style="margin: 1em 0;">
+      <input type="file" accept="image/*" name="image" id="imageInput">
+    </div>
+    <input id="imageBase64Input" type="hidden" name="image_base64" ><!-- base64を送る用のinput (非表示) -->
+    <canvas id="imageCanvas" style="display: none;"></canvas><!-- 画像縮小に使うcanvas (非表示) -->
+    <button type="submit" class="btn btn-info">送信</button>
+  </form>
+
+</div>
  <hr>
- <dl id="entryTemplate" style="display: none; margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid #ccc;">
-   <dt>番号</dt>
-   <dd data-role="entryIdArea"></dd>
-   <dt>投稿者</dt>
-   <dd>
-      <a href="" data-role="entryUserAnchor">
-       <img data-role="entryUserIconImage"
-         style="height: 2em; width: 2em; border-radius: 50%; object-fit: cover;">
-       <span data-role="entryUserNameArea"></span>
-      </a>
-   </dd>
-   <dt>日時</dt>
-   <dd data-role="entryCreatedAtArea"></dd>
-   <dt>内容</dt>
-   <dd data-role="entryBodyArea">
-   </dd>
- </dl>
- <div id="entriesRenderArea"></div>
+ <div class="mx-auto" style="width: 300px;">
+  <dl id="entryTemplate" style="display: none; margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid #ccc;">
+    <dt>番号</dt>
+    <dd data-role="entryIdArea"></dd>
+    <dt>投稿者</dt>
+    <dd>
+        <a href="" data-role="entryUserAnchor">
+        <img data-role="entryUserIconImage"
+          style="height: 2em; width: 2em; border-radius: 50%; object-fit: cover;">
+        <span data-role="entryUserNameArea"></span>
+        </a>
+    </dd>
+    <dt>日時</dt>
+    <dd data-role="entryCreatedAtArea"></dd>
+    <dt>内容</dt>
+    <dd data-role="entryBodyArea">
+    </dd>
+  </dl>
+  <div id="entriesRenderArea"></div>
+</div>
 
 
-
- <script>
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const entryTemplate = document.getElementById('entryTemplate');
    const entriesRenderArea = document.getElementById('entriesRenderArea');

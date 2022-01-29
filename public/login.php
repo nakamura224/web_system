@@ -39,28 +39,37 @@ header("Location: ./login_finish.php");
 return;
 }
 ?>
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<h1>ログイン</h1>
-初めての人は<a href="/signup.php">会員登録</a>しましょう。
-<hr>
+<div class = "p-3 mb-2 bg-info text-white">
+<div class="mx-auto" style="width: 300px;">
+  <h1>ログイン</h1>
+  初めての人は<a href="/signup.php" class="text-warning">会員登録</a>しましょう。
+</div>
+</div>
 
 <!-- ログインフォーム -->
+<div class = "form-group">
 <form method="POST">
-<!-- input要素のtype属性は全部textでも動くが、適切なものに設定すると利用者は使いやすい -->
-<label>
-  メールアドレス:
-  <input type="email" name="email">
-</label>
-<br>
-<label>
-  パスワード:
-  <input type="password" name="password" min="6" autocomplete="new-password">
-</label>
-<br>
-<button type="submit">決定</button>
+  <!-- input要素のtype属性は全部textでも動くが、適切なものに設定すると利用者は使いやすい -->
+  <label for = "id">
+    メールアドレス:
+    <input type="email" name="email">
+  </label>
+  <br>
+  <label for = "id">
+    パスワード:
+    <input type="password" name="password" min="6" autocomplete="new-password">
+  </label>
+  <br>
+  <button type="submit" class="btn btn-outline-primary">決定</button>
 </form>
+</div>
 <?php if(!empty($_GET['error'])): // エラー用のクエリパラメータがある場合はエラーメッセージ表示 ?>
 <div style="color: red;">
   メールアドレスかパスワードが間違っています。

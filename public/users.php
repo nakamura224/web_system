@@ -46,33 +46,38 @@ if (!empty($where_sql_array)) {
    ); // array_map で followee_user_id カラムだけ抜き出す
  }
  ?>
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+
  <link rel="stylesheet" href="./common.css">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
  <body>
+ <div class = "p-3 mb-2 bg-info text-white">
    <h1>会員一覧</h1>
    <div style="margin-bottom: 1em;">
-     <a href="/setting/index.php">設定画面</a>
+     <a href="/setting/index.php" class="text-warning">設定画面</a>
      /
-     <a href="/timeline.php">タイムライン</a>
+     <a href="/timeline.php" class="text-warning">タイムライン</a>
    </div>
-
-   <div style="margin-bottom: 1em;">
+ </div>
+   <div style="margin-bottom: 1em;" class="mx-5">
      絞り込み<br>
      <form method="GET">
-       名前: <input type="text" name="name" value="<?= htmlspecialchars($_GET['name'] ?? '') ?>"><br>
+       名前: <input type="text" name="name" value="<?= htmlspecialchars($_GET['name'] ?? '') ?>" class="form-label"><br>
        生まれ年:
-       <input type="number" name="year_from" value="<?= htmlspecialchars($_GET['year_from'] ?? '') ?>">年
+       <input type="number" name="year_from" value="<?= htmlspecialchars($_GET['year_from'] ?? '') ?>" >年
        ~
        <input type="number" name="year_until" value="<?= htmlspecialchars($_GET['year_until'] ?? '') ?>">年
        <br>
-       <button type="submit">決定</button>
+       <button type="submit" class="btn btn-outline-success">決定</button>
      </form>
    </div>
 
    <?php foreach($select_sth as $user): ?>
-     <div style="display: flex; justify-content: start; align-items: center; padding: 1em 2em;">
+     <div style="display: flex; justify-content: start; align-items: center; padding: 1em 2em;" class="mx-5">
        <?php if(empty($user['icon_filename'])): ?>
          <!-- アイコン無い場合は同じ大きさの空白を表示して揃えておく -->
          <div style="height: 2em; width: 2em;"></div>

@@ -16,14 +16,20 @@
  ]);
  $user = $select_sth->fetch();
  ?>
+ <link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
  <link rel="stylesheet" href="./setting/common.css">
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<div class = "p-3 mb-2 bg-info text-white">
+   <a href="/timeline.php" class="text-warning">タイムラインに戻る</a>
 
-<a href="/timeline.php">タイムラインに戻る</a>
  <h1>設定画面</h1>
+</div>
+<div class="mx-5"> 
  <p>
    現在の設定
  </p>
@@ -35,11 +41,11 @@
    <dt>名前</dt>
    <dd><?= htmlspecialchars($user['name']) ?></dd>
  </dl>
-
- <ul>
-   <li><a href="./edit_name.php">名前設定</a></li>
-   <li><a href="./icon.php">アイコン設定</a></li>
-   <li><a href="./cover.php">カバー画像設定</a></li>
-   <li><a href="./birthday.php">生年月日設定</a></li>
-   <li><a href="./introduction.php">自己紹介文設定</a></li>
+</div>
+ <ul class="w-50">
+   <li><a href="./edit_name.php" class="list-group-item list-group-item-action">名前設定</a></li>
+   <li><a href="./icon.php" class="list-group-item list-group-item-action">アイコン設定</a></li>
+   <li><a href="./cover.php" class="list-group-item list-group-item-action">カバー画像設定</a></li>
+   <li><a href="./birthday.php" class="list-group-item list-group-item-action">生年月日設定</a></li>
+   <li><a href="./introduction.php" class="list-group-item list-group-item-action">自己紹介文設定</a></li>
  </ul>

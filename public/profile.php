@@ -62,33 +62,38 @@ $entries_select_sth->execute([
    $follower_relationship = $select_sth->fetch();
  }
  ?>
+ <link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
  <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
- <a href="/timeline.php">タイムラインに戻る</a>
- <div style="
+<div class = "p-3 mb-2 bg-info text-white">
+  <a href="/timeline.php" class="text-warning">タイムラインに戻る</a>
+</div>
+<div style="
      width: 100%; height: 15em;
      <?php if(!empty($user['cover_filename'])): ?>
      background: url('/image/<?= $user['cover_filename'] ?>') center;
      <?php endif; ?>
    ">
- </div>
-
+</div>
+<div class="mx-auto" style="width: 500px;">
  <h1><?= htmlspecialchars($user['name']) ?> さん のプロフィール</h1>
 
-<div>
-  <?php if(empty($user['icon_filename'])): ?>
-  現在未設定
-  <?php else: ?>
-  <img src="/image/<?= $user['icon_filename'] ?>"
-    style="height: 5em; width: 5em; border-radius: 50%; object-fit: cover;">
-  <?php endif; ?>
-</div>
+  <div>
+    <?php if(empty($user['icon_filename'])): ?>
+    現在未設定
+    <?php else: ?>
+    <img src="/image/<?= $user['icon_filename'] ?>"
+      style="height: 5em; width: 5em; border-radius: 50%; object-fit: cover;">
+    <?php endif; ?>
+  </div>
+
 
 <?php if($user['id'] === $_SESSION['login_user_id']): ?>
  <div style="margin: 1em 0;">
    これはあなたです！<br>
-   <a href="/setting/index.php">設定画面はこちら</a>
+   <a href="/setting/index.php" class="text-warning">設定画面はこちら</a>
  </div>
 
  <?php else: ?>
@@ -112,20 +117,21 @@ $entries_select_sth->execute([
  </div>
  <?php endif; ?>
 
-<?php if(!empty($user['birthday'])): ?>
- <?php
-   $birthday = DateTime::createFromFormat('Y-m-d', $user['birthday']);
-   $today = new DateTime('now');
- ?>
-   <?= $today->diff($birthday)->y ?>歳
- <?php endif; ?>
- <br>
- <a href="../users.php">会員一覧へ戻る</a>
-<div>
-   <?= nl2br(htmlspecialchars($user['introduction'])) ?>
+  <?php if(!empty($user['birthday'])): ?>
+  <?php
+    $birthday = DateTime::createFromFormat('Y-m-d', $user['birthday']);
+    $today = new DateTime('now');
+  ?>
+    <?= $today->diff($birthday)->y ?>歳
+  <?php endif; ?>
+  <br>
+  <a href="../users.php" class="text-warning">会員一覧へ戻る</a>
+  <div>
+    <?= nl2br(htmlspecialchars($user['introduction'])) ?>
+  </div>
 </div>
 <hr>
-
+<div class="mx-auto" style="width: 300px;">
  <?php foreach($entries_select_sth as $entry): ?>
    <dl style="margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid #ccc;">
      <dt>日時</dt>
@@ -142,3 +148,4 @@ $entries_select_sth->execute([
      
    </dl>
  <?php endforeach ?>
+</div>
